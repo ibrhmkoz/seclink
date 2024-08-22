@@ -9,6 +9,7 @@ def extract_links(url):
 
     soup = BeautifulSoup(response.text, 'html.parser')
     links = set()
+    links.add(url)
 
     for a_tag in soup.find_all('a', href=True):
         href = a_tag['href'].strip()
@@ -28,10 +29,3 @@ def extract_links(url):
                 links.add(href)
 
     return links
-
-
-# Example usage:
-url = 'https://stackoverflow.com/'
-all_links = extract_links(url)
-for link in all_links:
-    print(link)

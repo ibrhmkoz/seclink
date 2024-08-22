@@ -41,7 +41,7 @@ class VirusTotalURLScanner:
 
 async def main():
     api_key = ''
-    url_to_scan = 'https://stackoverflow.com/'
+    url_to_scan = 'https://stackoverflow.com/users/login'
 
     scanner = VirusTotalURLScanner(api_key)
     try:
