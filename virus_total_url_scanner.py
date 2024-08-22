@@ -4,6 +4,18 @@ import ssl
 import certifi
 
 
+async def retry_with_exponential_backoff(callback, max_tries=5, base_wait_time=1):
+    for attempt in range(max_tries):
+        try:
+            return await callback()
+        except TimeoutError:
+            if attempt == max_tries - 1:
+                raise
+            wait_time = base_wait_time * (2 ** attempt)
+            print(f"Attempt {attempt + 1} failed. Waiting {wait_time} seconds before retrying...")
+            await asyncio.sleep(wait_time)
+
+
 class VirusTotalURLScanner:
     def __init__(self, api_key):
         self._api_key = api_key
@@ -24,26 +36,17 @@ class VirusTotalURLScanner:
             if not analysis_id:
                 raise ValueError(f"Failed to get analysis_id. Response: {scan_result}")
 
-            return await self.poll_result(session, analysis_id)
+            return await retry_with_exponential_backoff(lambda: self.get_analysis_result(session, analysis_id))
 
-    async def poll_result(self, session, analysis_id):
-        max_tries = 10
-        base_wait_time = 1
+    async def get_analysis_result(self, session, analysis_id):
+        async with session.get(f'{self._base_url}/analyses/{analysis_id}', headers=self._headers) as response:
+            report_result = await response.json()
 
-        for attempt in range(max_tries):
-            async with session.get(f'{self._base_url}/analyses/{analysis_id}', headers=self._headers) as response:
-                report_result = await response.json()
-
-            status = report_result.get('data', {}).get('attributes', {}).get('status')
-            if status == 'completed':
-                return report_result
-
-            # If result not ready, wait before trying again
-            wait_time = base_wait_time * (2 ** attempt)  # Exponential backoff
-            print(f"Result not ready. Waiting {wait_time} seconds before retrying...")
-            await asyncio.sleep(wait_time)
-
-        raise TimeoutError("Max retries reached. Scan result not available.")
+        status = report_result.get('data', {}).get('attributes', {}).get('status')
+        if status == 'completed':
+            return report_result
+        else:
+            raise TimeoutError("Analysis not completed yet")
 
 
 async def main():
