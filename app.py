@@ -34,7 +34,7 @@ class ScannerView(MethodView):
         return jsonify({"results": formatted_results})
 
 
-VIRUS_TOTAL_API_KEY = ''
+VIRUS_TOTAL_API_KEY = '22d7b8b2228b98184fc9416de2a51bae89d987dbcd6d3f56ac1992616c7156a2'
 scanner_view = ScannerView.as_view('scanner', VirusTotalURLScanner(VIRUS_TOTAL_API_KEY))
 v1.add_url_rule('/scan', view_func=scanner_view)
 

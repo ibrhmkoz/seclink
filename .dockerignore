@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Git directory
+.git/
+.gitignore
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+docs/
