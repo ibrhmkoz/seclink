@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.12"
 requests = "^2.32.3"
 beautifulsoup4 = "^4.12.3"
+aiohttp = "^3.10.5"
+asyncio = "^3.4.3"
+certifi = "^2024.7.4"
 
 
 [build-system]
