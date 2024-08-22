@@ -12,6 +12,7 @@ beautifulsoup4 = "^4.12.3"
 aiohttp = "^3.10.5"
 asyncio = "^3.4.3"
 certifi = "^2024.7.4"
+flask = {extras = ["async"], version = "^3.0.3"}
 
 
 [build-system]
