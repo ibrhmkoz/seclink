@@ -37,19 +37,3 @@ class VirusTotalURLScanner:
             return report_result
         else:
             raise TimeoutError("Analysis not completed yet")
-
-
-async def main():
-    api_key = ''
-    url_to_scan = 'https://stackoverflow.com/users/login'
-
-    scanner = VirusTotalURLScanner(api_key)
-    try:
-        result = await scanner.scan_url(url_to_scan)
-        print(result)
-    except (TimeoutError, ValueError, aiohttp.ClientError) as e:
-        print(f"Error: {e}")
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
