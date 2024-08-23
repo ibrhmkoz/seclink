@@ -4,7 +4,7 @@ from flask import Flask, Blueprint, request, jsonify
 from flask.views import MethodView
 
 from extract_links import extract_links
-from virus_total_url_scanner import VirusTotalURLScanner
+from virus_total_url_scanner import VirusTotalURLScanner, CachedScanner
 
 app = Flask(__name__)
 v1 = Blueprint('v1', __name__, url_prefix='/api/v1')
@@ -35,7 +35,7 @@ class ScannerView(MethodView):
 
 
 VIRUS_TOTAL_API_KEY = '22d7b8b2228b98184fc9416de2a51bae89d987dbcd6d3f56ac1992616c7156a2'
-scanner_view = ScannerView.as_view('scanner', VirusTotalURLScanner(VIRUS_TOTAL_API_KEY))
+scanner_view = ScannerView.as_view('scanner', CachedScanner(VirusTotalURLScanner(VIRUS_TOTAL_API_KEY)))
 v1.add_url_rule('/scan', view_func=scanner_view)
 
 if __name__ == "__main__":

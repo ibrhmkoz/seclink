@@ -37,3 +37,19 @@ class VirusTotalURLScanner:
             return report_result
         else:
             raise TimeoutError("Analysis not completed yet")
+
+
+class CachedScanner:
+    def __init__(self, scanner):
+        self.scanner = scanner
+        self.cache = {}
+
+    async def scan_url(self, url):
+        # Check if the URL is already in the cache
+        if url in self.cache:
+            return self.cache[url]
+
+        # If not in cache, scan the URL and add it to the cache
+        result = await self.scanner.scan_url(url)
+        self.cache[url] = result
+        return result
