@@ -1,0 +1,64 @@
+@import url("reset.css");
+
+:root {
+    --fs-400: 1.6rem;
+    --fs-900: 3.8rem;
+
+    --ff-base: "Montserrat", sans-serif;
+
+    --clr-white: hsl(0, 0%, 100%);
+
+    --clr-cream: hsl(30, 38%, 92%);
+
+    --clr-green-400: hsl(158, 36%, 37%);
+    --clr-green-500: hsl(158, 36%, 20%)
+}
+
+body {
+    font-size: var(--fs-400);
+    font-family: var(--ff-base);
+    background-color: var(--clr-cream);
+}
+
+.grid {
+    display: grid;
+}
+
+.place-center {
+    place-items: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.input-field {
+    width: 80rem;
+    height: 12rem;
+    font-size: var(--fs-900);
+    border-radius: 1rem;
+    border: 1px solid black;
+    padding: 1.4rem;
+    background-color: var(--clr-white);
+    text-align: center;
+}
+
+.button {
+    font-size: var(--fs-900);
+    border-radius: 1rem;
+    border: 1px solid black;
+    background-color: var(--clr-green-400);
+    cursor: pointer;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--clr-white);
+}
+
+.button:hover {
+    background-color: var(--clr-green-500);
+}

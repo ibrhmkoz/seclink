@@ -1,0 +1,121 @@
+/*
+  Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*
+  Remove default margin
+*/
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/*
+  Typographic tweaks!
+  Add accessible line-height
+  Improve text rendering
+*/
+body {
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/*
+  Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/*
+  Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/*
+  Create a root stacking context
+*/
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/*
+  Smaller line height for h1, h2, h3 because they probably take on greater font sizes than 24px.
+*/
+h1,
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+/* Custom */
+html {
+    font-size: 62.5%;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scrollmargin */
+:target {
+    scroll-margin-block: 5ex;
+}

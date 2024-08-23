@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask.views import MethodView
 
 from virus_total_thorough_scanner import VirusTotalThoroughScanner
@@ -17,6 +17,9 @@ class ScannerView(MethodView):
         url = data['url']
 
         return await self.scanner.scan_url(url)
+
+    async def get(self):
+        return render_template('index.html')
 
 
 app = Flask(__name__)
