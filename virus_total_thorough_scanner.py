@@ -1,7 +1,5 @@
 import asyncio
 
-from flask import jsonify
-
 from extract_links import extract_links
 
 
