@@ -1,6 +1,6 @@
 import asyncio
 
-from flask import Flask, Blueprint, request, jsonify
+from flask import Flask, Blueprint, request, jsonify, render_template
 from flask.views import MethodView
 
 from extract_links import extract_links
@@ -8,6 +8,15 @@ from virus_total_url_scanner import VirusTotalURLScanner, CachedScanner
 
 app = Flask(__name__)
 v1 = Blueprint('v1', __name__, url_prefix='/api/v1')
+
+
+async def format_to_tabular_form(links, results):
+    formatted_results = []
+
+    for link, result in zip(links, results):
+        formatted_results.append(dict(link, **result["data"]["attributes"]["stats"]))
+
+    return formatted_results
 
 
 class ScannerView(MethodView):
@@ -29,9 +38,13 @@ class ScannerView(MethodView):
         results = await asyncio.gather(*scan_tasks)
 
         # Create a list of dictionaries with link and result
-        formatted_results = [{"link": link, "result": result} for link, result in zip(links, results)]
+        tabular_form = await format_to_tabular_form(links, results)
 
-        return jsonify({"results": formatted_results})
+        return
+
+
+    async def get(self):
+        return render_template("scan_result.html")
 
 
 VIRUS_TOTAL_API_KEY = '22d7b8b2228b98184fc9416de2a51bae89d987dbcd6d3f56ac1992616c7156a2'

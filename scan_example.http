@@ -4,5 +4,5 @@ POST http://localhost:8000/api/v1/scan
 Content-Type: application/json
 
 {
-  "url": "https://stackoverflow.com/"
+  "url": "https://www.hillelwayne.com/post/toolbox-languages/"
 }
