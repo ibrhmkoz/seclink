@@ -2,23 +2,23 @@
     <thead>
     <tr>
         <th>Link</th>
-        <th>Foo</th>
-        <th>Boo</th>
-        <th>Doo</th>
-        <th>Loo</th>
-        <th>Coo</th>
+        <th>Harmless</th>
+        <th>Malicious</th>
+        <th>Suspicious</th>
+        <th>Timeout</th>
+        <th>Undetected</th>
     </tr>
     </thead>
 
     <tbody>
     {% for result in results %}
     <tr>
-        <td>{{ result.title }}</td>
-        <td>{{ result.foo }}</td>
-        <td>{{ result.boo }}</td>
-        <td>{{ result.doo }}</td>
-        <td>{{ result.loo }}</td>
-        <td>{{ result.coo }}</td>
+        <td>{{ result.link }}</td>
+        <td>{{ result.harmless }}</td>
+        <td>{{ result.malicious }}</td>
+        <td>{{ result.suspicious }}</td>
+        <td>{{ result.timeout }}</td>
+        <td>{{ result.undetected }}</td>
     </tr>
     {% endfor %}
     </tbody>

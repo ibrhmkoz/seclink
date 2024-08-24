@@ -1,6 +1,6 @@
 ### Test the scan endpoint
 
-POST http://localhost:8000/api/v1/scan
+POST http://localhost:8000/
 Content-Type: application/json
 
 {

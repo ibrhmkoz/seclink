@@ -15,20 +15,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body class="grid place-center">
-<section>
-    <form class="input-container">
+<div id="content">
+    <form class="input-container" hx-post="/" hx-target="#content" hx-swap="innerHTML">
         <label>
             <input type="url"
-                   name="q"
+                   name="url"
                    placeholder="URL"
-                   hx-post="/scan"
-                   hx-trigger="keyup=[key=='Enter']"
-                   hx-swap="outerHTML"
                    class="input-field"
             />
         </label>
-        <button class="button">Scan</button>
+        <button type="submit" class="button">Scan</button>
     </form>
-</section>
+</div>
 </body>
 </html>
