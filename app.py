@@ -29,7 +29,7 @@ VIRUS_TOTAL_API_KEY = 'b009a156d4cfb26356ab606e853b09a6ff6b6789e9286eb1121b06ca6
 
 virus_total_thorough_scanner = VirusTotalThoroughScanner(CachedScanner(VirusTotalURLScanner(VIRUS_TOTAL_API_KEY)))
 
-stub_virus_total_thorough_scanner = StubScanner()
+# stub_virus_total_thorough_scanner = StubScanner()
 
 scanner_view = ScannerView.as_view('scanner', virus_total_thorough_scanner)
 app.add_url_rule('/', view_func=scanner_view)
