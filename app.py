@@ -25,13 +25,13 @@ class ScannerView(MethodView):
 
 app = Flask(__name__)
 
-VIRUS_TOTAL_API_KEY = '22d7b8b2228b98184fc9416de2a51bae89d987dbcd6d3f56ac1992616c7156a2'
+VIRUS_TOTAL_API_KEY = 'b009a156d4cfb26356ab606e853b09a6ff6b6789e9286eb1121b06ca6bad5587'
 
 virus_total_thorough_scanner = VirusTotalThoroughScanner(CachedScanner(VirusTotalURLScanner(VIRUS_TOTAL_API_KEY)))
 
 stub_virus_total_thorough_scanner = StubScanner()
 
-scanner_view = ScannerView.as_view('scanner', stub_virus_total_thorough_scanner)
+scanner_view = ScannerView.as_view('scanner', virus_total_thorough_scanner)
 app.add_url_rule('/', view_func=scanner_view)
 
 if __name__ == "__main__":
