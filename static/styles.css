@@ -1,8 +1,11 @@
 @import url("reset.css");
 
 :root {
-    --fs-400: 1.6rem;
-    --fs-900: 3.8rem;
+    --fs-400: 2.5rem;
+    --fs-900: 3rem;
+
+    --fw-regular: 400;
+    --fw-bold: 700;
 
     --ff-base: "Montserrat", sans-serif;
 
@@ -10,13 +13,18 @@
 
     --clr-cream: hsl(30, 38%, 92%);
 
+    --clr-dark-cream: hsl(30, 38%, 80%);
+
     --clr-green-400: hsl(158, 36%, 37%);
-    --clr-green-500: hsl(158, 36%, 20%)
+    --clr-green-500: hsl(158, 36%, 20%);
+
+    --clr-border: hsl(13, 72%, 14%);
 }
 
 body {
     font-size: var(--fs-400);
     font-family: var(--ff-base);
+    font-weight: var(--fw-regular);
     background-color: var(--clr-cream);
 }
 
@@ -61,4 +69,30 @@ body {
 
 .button:hover {
     background-color: var(--clr-green-500);
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    background-color: var(--clr-white);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: center;
+    padding: 0.7rem;
+    border: 1px solid var(--clr-border);
+}
+
+th {
+    font-weight: var(--fw-bold);
+    background-color: var(--clr-dark-cream);
+}
+
+.table-container {
+    background-color: var(--clr-border);
+    padding: 0.2rem;
+    overflow: hidden;
+    border-radius: 1rem;
 }

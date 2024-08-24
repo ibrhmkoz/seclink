@@ -1,25 +1,27 @@
-<table>
-    <thead>
-    <tr>
-        <th>Link</th>
-        <th>Harmless</th>
-        <th>Malicious</th>
-        <th>Suspicious</th>
-        <th>Timeout</th>
-        <th>Undetected</th>
-    </tr>
-    </thead>
+<div class="table-container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Link</th>
+            <th>Harmless</th>
+            <th>Malicious</th>
+            <th>Suspicious</th>
+            <th>Timeout</th>
+            <th>Undetected</th>
+        </tr>
+        </thead>
 
-    <tbody>
-    {% for result in results %}
-    <tr>
-        <td>{{ result.link }}</td>
-        <td>{{ result.harmless }}</td>
-        <td>{{ result.malicious }}</td>
-        <td>{{ result.suspicious }}</td>
-        <td>{{ result.timeout }}</td>
-        <td>{{ result.undetected }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.link }}</td>
+            <td>{{ result.harmless }}</td>
+            <td>{{ result.malicious }}</td>
+            <td>{{ result.suspicious }}</td>
+            <td>{{ result.timeout }}</td>
+            <td>{{ result.undetected }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

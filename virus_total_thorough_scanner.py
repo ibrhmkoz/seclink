@@ -37,6 +37,6 @@ def format_to_tabular_form(links, results):
 class StubScanner:
     async def scan_url(self, url):
         return [
-            {"malicious": 2, "suspicious": 6, "undetected": 1, "timeout": 0, "link": "foo.com"},
-            {"malicious": 4, "suspicious": 3, "undetected": 2, "timeout": 7, "link": "boo.com"}
+            {"harmless": 2, "malicious": 2, "suspicious": 6, "undetected": 1, "timeout": 0, "link": "foo.com"},
+            {"harmless": 3, "malicious": 4, "suspicious": 3, "undetected": 2, "timeout": 7, "link": "boo.com"}
         ]
